@@ -64,11 +64,9 @@ spec:
     name: alive_hosts
     query: |-
         import "influxdata/influxdb/v1"
-        linuxHost = v1.measurementTagValues(bucket: v.bucket,measurement: "cpu",tag: "host")
-        hostCount = linuxHost
+        v1.measurementTagValues(bucket: v.bucket,measurement: "cpu",tag: "host")
           |> group()
           |> count(column: "_value")
-        hostCount
     type: query
 ---
 apiVersion: influxdata.com/v2alpha1
